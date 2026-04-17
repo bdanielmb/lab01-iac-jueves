@@ -1,15 +1,11 @@
-const http = require("http");
+const http = require('http');
 
-const hostname = "0.0.0.0";
-const port = 3000;
-
-const server = http
-.createServer((request, response) => {
-  response.statusCode = 200;
-  response.setHeader("Content-Type", "text/plain");
-  response.end("Hola mundo! Un saludo");
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ mensaje: '¡Hola desde el Backend en Node.js!' }));
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Bienvenido http://${hostname}:${port}/`);
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Servidor API corriendo en el puerto ${PORT}`);
 });
