@@ -1,0 +1,35 @@
+services:
+  frontend:
+    container_name: Frontend
+    build: 
+      context: ./src/web       # <- Ruta actualizada
+      dockerfile: Dockerfile   # <- Nombre actualizado
+    networks:
+      - app-network
+    ports:
+    - "4001:80"
+  
+  backend:
+    container_name: Backend
+    build:
+      context: ./src/api       # <- Ruta actualizada
+      dockerfile: Dockerfile   # <- Nombre actualizado
+    networks:
+      - app-network
+    ports:
+      - "4002:3000"
+
+  database:
+    container_name: db
+    image: postgres:alpine     # <- Postgres para cumplir la tarea
+    environment:
+      POSTGRES_PASSWORD: rootpassword
+      POSTGRES_DB: mi_db
+    networks:
+      - app-network
+    ports:
+      - "4003:5432"            # <- Puerto de Postgres
+
+networks:
+  app-network:
+    driver: bridge
