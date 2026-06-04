@@ -1,0 +1,13 @@
+name: Saludando
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  saludo:
+    runs-on ubuntu-latest
+    steps:
+      
