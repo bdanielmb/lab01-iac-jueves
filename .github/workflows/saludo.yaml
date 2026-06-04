@@ -10,4 +10,7 @@ jobs:
   saludo:
     runs-on ubuntu-latest
     steps:
-      
+      -name: Saludo desde main
+       run: echo "Hola desde main,"mi nombre es Brayan Mendoza"
+      -name: Saludo desde develop
+       runs
